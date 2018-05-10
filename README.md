@@ -1,7 +1,7 @@
 # コーディングベース
 
-##npm start
+## npm start
 gulpのデフォルトタスクを実行
 
-##npm run gulp clean-image
+## npm run gulp clean-image
 src内のimagesフォルダから削除した画像を、dist内のimagesフォルダからも削除
