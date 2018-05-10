@@ -1,0 +1,95 @@
+/**
+ * Base
+ */
+
+// button,
+// input {
+// 	line-height: normal;
+// }
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+	border: none;
+	padding: 0;
+}
+button {
+	margin: 0;
+	border: none;
+	padding: 0;
+	background-color: transparent;
+	appearance: none;
+	outline: none;
+}
+img {
+	vertical-align: top;
+}
+textarea {
+	vertical-align: top;
+	font-family: inherit;
+}
+button,
+input[type="button"],
+input[type="checkbox"],
+input[type="image"],
+input[type="radio"],
+input[type="reset"],
+input[type="submit"],
+label,
+select {
+	cursor: pointer;
+}
+// button,
+// input,
+// select,
+// textarea {
+// 	vertical-align: middle;
+// }
+
+// @font-face {
+// 	font-family: "MyFont";
+// 	src: url("myfont.eot");
+// 	src: url("myfont.eot?#iefix") format("embedded-opentype"),
+// 		// url("myfont.woff2") format("woff2"),
+// 		url("myfont.woff") format("woff"),
+// 		url("myfont.ttf") format("truetype");
+// }
+
+html,
+body {
+	height: 100%;
+}
+html {
+	font-size: 62.5%;
+}
+body {
+	min-width: $contW;
+	color: #333;
+	font-family: "メイリオ", Meiryo, "ヒラギノ角ゴシック Pro", "Hiragino Kaku Gothic Pro", Verdana, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+	line-height: 1.6;
+	-webkit-font-smoothing: subpixel-antialiased;
+	-moz-osx-font-smoothing: unset;
+	-webkit-text-size-adjust: 100%;
+	@media only screen and (-webkit-min-device-pixel-ratio: 2), (min-resolution: 2dppx) {
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+	}
+}
+a {
+	&:hover {
+		img {}
+	}
+}
+@media screen and (max-width: $bP-sp) {
+	body {
+		min-width: 0;
+	}
+}
+
+.f-container {
+	margin: 0 auto;
+	width: $contW;
+}
+@media screen and (max-width: $bP-sp) {
+	.f-container {
+		width: auto;
+	}
+}

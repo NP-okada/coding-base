@@ -1,0 +1,33 @@
+// * Mixin & Variable * //
+$bP-sp: 640px;
+$contW: 960px;
+
+@mixin cf {
+	&::after {
+		content: "";
+		display: block;
+		clear: both;
+	}
+}
+@mixin opacity($opacity) {
+	-ms-filter: quote(alpha(opacity=($opacity * 100)));
+	opacity: $opacity;
+}
+@mixin font-size($px) {
+	font-size: unquote($px + 'px');
+	font-size: unquote($px / 10 + 'rem');
+}
+@mixin transform($val) {
+	-ms-transform: $val;
+	-webkit-transform: $val;
+	transform: $val;
+}
+@mixin transform-origin($val) {
+	-ms-transform-origin: $val;
+	-webkit-transform-origin: $val;
+	transform-origin: $val;
+}
+@mixin transition($val) {
+	-webkit-transition: $val;
+	transition: $val;
+}
