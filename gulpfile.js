@@ -16,7 +16,7 @@ const webpackConfig = require('./webpack.config.js');
 const pkg = require('./package.json');
 
 
-// 変数定義
+// 定数定義
 const mode = 'development'; // production or development
 const src = {
 	pug: ['src/**/*.pug', '!' + 'src/**/_*.pug'],
@@ -42,7 +42,7 @@ gulp.task('serve', () => {
 	gulp.watch(src.pug, ['pug']);
 	gulp.watch(src.scss, ['sass']);
 	gulp.watch(webpackConfig.entry, ['js']);
-	gulp.watch(src.images, ['copy-image']);
+	gulp.watch(src.images, ['copyImage']);
 });
 
 gulp.task('pug', () => {
@@ -91,22 +91,22 @@ gulp.task('js', () => {
 		.pipe(browserSync.stream());
 });
 
-gulp.task('copy-image', () => {
+gulp.task('copyImage', () => {
 	return gulp.src(src.images, {
 			base: 'src'
 		})
 		.pipe(gulp.dest('dist'))
 		.pipe(browserSync.stream());
 });
-gulp.task('del-image', () => {
+gulp.task('delImage', () => {
 	return del(dist.images);
 });
-gulp.task('clean-image', () => {
-	return runSequence('del-image', 'copy-image');
+gulp.task('cleanImage', () => {
+	return runSequence('delImage', 'copyImage');
 });
 
 gulp.task('build', () => {
-	return runSequence('pug', 'sass', 'js', 'clean-image');
+	return runSequence('pug', 'sass', 'js', 'cleanImage');
 });
 
 gulp.task('default', ['serve']);
