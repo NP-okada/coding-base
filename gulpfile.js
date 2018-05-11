@@ -28,7 +28,7 @@ const dist = {
 	js: 'dist/assets/js',
 	images: ['dist/**/images/**'],
 };
-const errorHandler = notify.onError({
+const errorHandlerFunc = notify.onError({
 	message: 'Error: <%= error.message %>',
 	icon: path.join(__dirname, 'error.png')
 });
@@ -51,7 +51,7 @@ gulp.task('pug', () => {
 			base: 'src'
 		})
 		.pipe(plumber({
-			errorHandler: errorHandler
+			errorHandler: errorHandlerFunc
 		}))
 		.pipe(gulpData(file => {
 			locals.relPath = path.relative(file.base, file.path.replace(/.pug$/, '.html'));
@@ -68,7 +68,7 @@ gulp.task('pug', () => {
 gulp.task('sass', () => {
 	return gulp.src(src.scss)
 		.pipe(plumber({
-			errorHandler: errorHandler
+			errorHandler: errorHandlerFunc
 		}))
 		.pipe(sass({
 			outputStyle: 'expanded'
@@ -85,7 +85,7 @@ gulp.task('js', () => {
 	webpackConfig.mode = mode;
 	return webpackStream(webpackConfig, webpack)
 		.pipe(plumber({
-			errorHandler: errorHandler
+			errorHandler: errorHandlerFunc
 		}))
 		.pipe(gulp.dest(dist.js))
 		.pipe(browserSync.stream());
