@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "npm run gulp",
     "gulp": "gulp",
-    "postinstall": "npm run gulp copy-image"
+    "postinstall": "npm run gulp build"
   },
   "keywords": [],
   "author": "NP-okada <okada@nxpg.net>",

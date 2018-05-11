@@ -17,10 +17,7 @@ const pkg = require('./package.json');
 
 
 // 変数定義
-const errorHandler = notify.onError({
-	message: 'Error: <%= error.message %>',
-	icon: path.join(__dirname, 'error.png')
-});
+const mode = 'development'; // production or development
 const src = {
 	pug: ['src/**/*.pug', '!' + 'src/**/_*.pug'],
 	scss: 'src/assets/scss/*.scss',
@@ -29,11 +26,16 @@ const src = {
 const dist = {
 	css: 'dist/assets/css',
 	js: 'dist/assets/js',
+	images: ['dist/**/images/**'],
 };
+const errorHandler = notify.onError({
+	message: 'Error: <%= error.message %>',
+	icon: path.join(__dirname, 'error.png')
+});
 
 
 // タスク定義
-gulp.task('serve', ['pug', 'sass', 'js'], () => {
+gulp.task('serve', () => {
 	browserSync.init({
 		server: './'
 	});
@@ -43,7 +45,7 @@ gulp.task('serve', ['pug', 'sass', 'js'], () => {
 	gulp.watch(src.images, ['copy-image']);
 });
 
-gulp.task('pug', function() {
+gulp.task('pug', () => {
 	var locals = {};
 	return gulp.src(src.pug, {
 			base: 'src'
@@ -80,6 +82,7 @@ gulp.task('sass', () => {
 });
 
 gulp.task('js', () => {
+	webpackConfig.mode = mode;
 	return webpackStream(webpackConfig, webpack)
 		.pipe(plumber({
 			errorHandler: errorHandler
@@ -96,10 +99,14 @@ gulp.task('copy-image', () => {
 		.pipe(browserSync.stream());
 });
 gulp.task('del-image', () => {
-	return del(['dist/**/images/**']);
+	return del(dist.images);
 });
 gulp.task('clean-image', () => {
 	return runSequence('del-image', 'copy-image');
+});
+
+gulp.task('build', () => {
+	return runSequence('pug', 'sass', 'js', 'clean-image');
 });
 
 gulp.task('default', ['serve']);

@@ -1,10 +1,9 @@
+const path = require('path');
+
 module.exports = {
-	// production or development
-	mode: 'development',
 	entry: './src/assets/js/entry.js',
 	output: {
-		path: __dirname,
-		filename: 'bundle.js'
+		filename: 'bundle.js',
 	},
 	module: {
 		rules: [{
