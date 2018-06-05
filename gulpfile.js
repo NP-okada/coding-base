@@ -21,6 +21,7 @@ const mode = 'development'; // production or development
 const src = {
 	pug: ['src/**/*.pug', '!' + 'src/**/_*.pug'],
 	scss: 'src/assets/scss/*.scss',
+	js: 'src/assets/js/**/*.js',
 	images: ['src/**/images/**'],
 };
 const dist = {
@@ -41,7 +42,7 @@ gulp.task('serve', () => {
 	});
 	gulp.watch(src.pug, ['pug']);
 	gulp.watch(src.scss, ['sass']);
-	gulp.watch(webpackConfig.entry, ['js']);
+	gulp.watch(src.js, ['js']);
 	gulp.watch(src.images, ['copyImage']);
 });
 
