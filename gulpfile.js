@@ -19,7 +19,7 @@ const pkg = require('./package.json');
 // 定数定義
 const mode = 'development'; // production or development
 const src = {
-	pug: ['src/**/*.pug', '!' + 'src/**/_*.pug'],
+	pug: ['src/**/*.pug', '!src/**/_*.pug'],
 	scss: 'src/assets/scss/*.scss',
 	js: 'src/assets/js/**/*.js',
 	images: ['src/**/images/**'],
