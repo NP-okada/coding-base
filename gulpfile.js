@@ -3,7 +3,7 @@ const browserSync = require('browser-sync').create();
 const del = require('del');
 const path = require('path');
 const gulp = require('gulp');
-const gulpData = require('gulp-data');
+const data = require('gulp-data');
 const notify = require('gulp-notify');
 const plumber = require('gulp-plumber');
 const pug = require('gulp-pug');
@@ -22,12 +22,12 @@ const src = {
 	pug: ['src/**/*.pug', '!src/**/_*.pug'],
 	scss: 'src/assets/scss/*.scss',
 	js: 'src/assets/js/**/*.js',
-	images: ['src/**/images/**'],
+	images: 'src/**/images/**',
 };
 const dist = {
 	css: 'dist/assets/css',
 	js: 'dist/assets/js',
-	images: ['dist/**/images/**'],
+	images: 'dist/**/images/**',
 };
 const errorHandlerFunc = notify.onError({
 	message: 'Error: <%= error.message %>',
@@ -43,7 +43,7 @@ gulp.task('serve', () => {
 	gulp.watch(src.pug, ['pug']);
 	gulp.watch(src.scss, ['sass']);
 	gulp.watch(src.js, ['js']);
-	gulp.watch(src.images, ['copyImage']);
+	gulp.watch(src.images + '/*.{png,jpg}', ['image:copy']);
 });
 
 gulp.task('pug', () => {
@@ -54,7 +54,7 @@ gulp.task('pug', () => {
 		.pipe(plumber({
 			errorHandler: errorHandlerFunc
 		}))
-		.pipe(gulpData(file => {
+		.pipe(data(file => {
 			locals.relPath = path.relative(file.base, file.path.replace(/.pug$/, '.html'));
 			return locals;
 		}))
@@ -92,22 +92,22 @@ gulp.task('js', () => {
 		.pipe(browserSync.stream());
 });
 
-gulp.task('copyImage', () => {
+gulp.task('image:copy', () => {
 	return gulp.src(src.images, {
 			base: 'src'
 		})
 		.pipe(gulp.dest('dist'))
 		.pipe(browserSync.stream());
 });
-gulp.task('delImage', () => {
+gulp.task('image:del', () => {
 	return del(dist.images);
 });
-gulp.task('cleanImage', () => {
-	return runSequence('delImage', 'copyImage');
+gulp.task('image', () => {
+	return runSequence('image:del', 'image:copy');
 });
 
 gulp.task('build', () => {
-	return runSequence('pug', 'sass', 'js', 'cleanImage');
+	return runSequence('pug', 'sass', 'js', 'image');
 });
 
 gulp.task('default', ['serve']);
