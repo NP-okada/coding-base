@@ -83,13 +83,3 @@ a {
 		min-width: 0;
 	}
 }
-
-.f-container {
-	margin: 0 auto;
-	width: $contW;
-}
-@media screen and (max-width: $bP-sp) {
-	.f-container {
-		width: auto;
-	}
-}

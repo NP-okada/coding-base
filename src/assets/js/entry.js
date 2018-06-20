@@ -1,8 +1,11 @@
+import {common} from './import/common.js';
+
 ;(($) => {
-	$(() => {
+	(() => {
 		var $w = $(window);
 		var bp = 640;
 		var init = () => {
+			common();
 			console.log('initialized');
 		};
 
@@ -34,5 +37,5 @@
 				}
 			});
 		})();
-	});
+	})();
 })(jQuery);

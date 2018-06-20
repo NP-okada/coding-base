@@ -2,10 +2,6 @@ const path = require('path');
 
 module.exports = {
 	// watch: true,
-	entry: './src/assets/js/entry.js',
-	output: {
-		filename: 'bundle.js',
-	},
 	module: {
 		rules: [{
 			test: /\.js$/,
