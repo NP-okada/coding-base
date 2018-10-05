@@ -5,9 +5,7 @@
 .m-container {
 	margin: 0 auto;
 	width: $contW;
-}
 @media screen and (max-width: $bP-sp) {
-	.m-container {
-		width: auto;
-	}
+	width: auto;
+}
 }
