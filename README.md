@@ -16,4 +16,4 @@ dist以下のファイルはタスク実行で生成されるので基本的に�
 gulpのデフォルトタスクを実行
 
 ### npm run gulp build
-ビルド（リリース時はgulpfile.js内のmodeを'production'に変えて実行してください）
+ビルド（リリース時はgulpfile.js内のmodeを'production'に変えるか、オプション指定'--mode prod'で実行してください）
