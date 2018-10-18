@@ -20,6 +20,27 @@ const webpackConfig = require('./webpack.config.js');
 const pkg = require('./package.json');
 
 
+// fetch command line arguments
+const arg = (argList => {
+	var arg = {}, a, opt, thisOpt, curOpt;
+	for (a = 0; a < argList.length; a++) {
+		thisOpt = argList[a].trim();
+		opt = thisOpt.replace(/^\-+/, '');
+		if (opt === thisOpt) {
+			// argument value
+			if (curOpt) arg[curOpt] = opt;
+			curOpt = null;
+		}
+		else {
+			// argument name
+			curOpt = opt;
+			arg[curOpt] = true;
+		}
+	}
+	return arg;
+})(process.argv);
+
+
 // 定数・変数定義
 var mode = 'development'; // production or development
 const src = {
@@ -42,27 +63,6 @@ const errorHandlerFunc = notify.onError({
 	message: 'Error: <%= error.message %>',
 	icon: path.join(__dirname, 'error.png')
 });
-
-
-// fetch command line arguments
-const arg = (argList => {
-	var arg = {}, a, opt, thisOpt, curOpt;
-	for (a = 0; a < argList.length; a++) {
-		thisOpt = argList[a].trim();
-		opt = thisOpt.replace(/^\-+/, '');
-		if (opt === thisOpt) {
-			// argument value
-			if (curOpt) arg[curOpt] = opt;
-			curOpt = null;
-		}
-		else {
-			// argument name
-			curOpt = opt;
-			arg[curOpt] = true;
-		}
-	}
-	return arg;
-})(process.argv);
 
 
 // refer command line arguments
