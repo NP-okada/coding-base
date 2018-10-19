@@ -1,10 +1,11 @@
 block vars
 	include _vars
+include _mixin
 doctype html
-html(lang="ja")
+html(lang="ja", itemtype="http://schema.org/WebPage", itemscope)
 	head(prefix='og: http://ogp.me/ns# ' + ogType + ': http://ogp.me/ns/' + ogType + '#')
 		include _head
-	body(itemtype="http://schema.org/WebPage", itemscope)
+	body(class=bodyClass)
 		#pageTop.l-wrapper
 			include _header
 			block content
