@@ -39,6 +39,7 @@ NEWS一覧とNEWS詳細で使うパーツがある場合に、共通のPageレ�
 .p-news.p-newsList  
 .p-news.p-newsDetail  
 のようなマルチclassにして利用するなど。
+（この例でコンポーネント化する場合、.c-newsSidebarとなる）
 
 # CSSプロパティ記述順
 表示に対する影響が大きい（と思われる）順  
