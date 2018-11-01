@@ -30,6 +30,7 @@ dist以下のファイルはタスク実行で生成されるので基本的に�
     │       ├── _f_base.scss     : ベースCSS
     │       ├── _f_mv.scss       : mixinおよび変数を定義
     │       ├── _f_reset.scss    : リセットCSS
+    │       ├── _keyframes.scss  : keyframesを定義
     │       ├── _l_footer.scss   : フッター
     │       ├── _l_header.scss   : ヘッダー
     │       ├── _l_other.scss    : その他「レイアウト（.l-）」レイヤーのスタイル
