@@ -63,4 +63,4 @@ NEWS一覧とNEWS詳細で使うパーツがある場合に、共通のPageレ�
 margin、border、padding、width、heightの順で指定し、  
 フォント系は配置に関係する  
 text-align、vertical-alignなどを先に記述する。  
-また、疑似要素（::beforeと::after）ではcontentは必須プロパティなので、忘れないよう最初に記述することとする。  
+また、beforeおよびafter疑似要素ではcontentは必須プロパティなので、忘れないよう最初に記述することとする。  
