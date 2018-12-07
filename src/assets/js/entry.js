@@ -20,7 +20,7 @@ import {other} from './import/other.js';
 		var baseSize;
 
 		$(() => {
-			baseSize = (window.innerWidth <= g.bp) ? 'sp' : 'notSp';
+			baseSize = (window.innerWidth <= g.breakPoint) ? 'sp' : 'notSp';
 
 			if (baseSize === 'sp') {
 				g.$w.trigger('_size.sp');
@@ -29,7 +29,7 @@ import {other} from './import/other.js';
 			}
 		});
 		g.$w.on('resize', () => {
-			var size = (window.innerWidth <= g.bp) ? 'sp' : 'notSp';
+			var size = (window.innerWidth <= g.breakPoint) ? 'sp' : 'notSp';
 
 			if (size !== baseSize) {
 				if (size === 'sp') {
