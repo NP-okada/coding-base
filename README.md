@@ -19,26 +19,26 @@ dist以下のファイルはタスク実行で生成されるので基本的に�
     │   ├── images               : CSSで使用する画像を格納
     │   ├── js
     │   │   ├── entry.js
-    │   │   ├── import           : entry.jsでimportするjsを格納
+    │   │   ├── import           : importするjsを格納
     │   │   │   ├── common.js    : 共通系の関数を定義
-    │   │   │   ├── component.js : コンポーネントレイヤー（.c-）のjsを定義
+    │   │   │   ├── component.js : 「コンポーネント（.c-）」レイヤーのjsを定義
     │   │   │   ├── global.js    : import以下のjs間で参照できる変数・関数を定義（「g」オブジェクトとして参照）
-    │   │   │   ├── module.js    : モジュールレイヤー（.m-）のjsを定義
-    │   │   │   └── other.js     : その他パーツのjsを定義
+    │   │   │   ├── other.js     : その他パーツのjsを定義
+    │   │   │   └── project.js   : 「プロジェクト（.p-）」レイヤーのjsを定義
     │   │   └── vendor           : プラグインjsを格納
     │   └── scss
     │       ├── _f_base.scss     : ベースCSS
     │       ├── _f_mv.scss       : mixinおよび変数を定義
     │       ├── _f_reset.scss    : リセットCSS
     │       ├── _keyframes.scss  : keyframesを定義
-    │       ├── _l_footer.scss   : フッター
-    │       ├── _l_header.scss   : ヘッダー
-    │       ├── _l_other.scss    : その他「レイアウト（.l-）」レイヤーのスタイル
-    │       ├── _o_component.scss: 「コンポーネント（.c-）」レイヤーのスタイル
-    │       ├── _o_module.scss   : 「モジュール（.m-）」レイヤーのスタイル
-    │       ├── _o_other.scss    : その他パーツ
-    │       ├── _o_utility.scss  : 「ユーティリティ（.u-）」レイヤーのスタイル
-    │       ├── _p_page.scss     : 「ページ（.p-）」レイヤーのスタイル
+    │       ├── _l_footer.scss   : フッターのスタイルを定義
+    │       ├── _l_header.scss   : ヘッダーのスタイルを定義
+    │       ├── _l_other.scss    : その他「レイアウト（.l-）」レイヤーのスタイルを定義
+    │       ├── _o_component.scss: 「コンポーネント（.c-）」レイヤーのスタイルを定義
+    │       ├── _o_other.scss    : その他パーツのスタイルを定義
+    │       ├── _o_project.scss  : 「プロジェクト（.p-）」レイヤーのスタイルを定義
+    │       ├── _o_utility.scss  : 「ユーティリティ（.u-）」レイヤーのスタイルを定義
+    │       ├── _p_page.scss     : 「ページ（.pg-）」レイヤーのスタイルを定義
     │       ├── style.scss       : 各scssをimport
     │       └── vendor           : プラグインCSSを格納
     ├── images                   : ページ（コンテンツ）の画像を格納

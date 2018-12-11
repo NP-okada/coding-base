@@ -27,11 +27,7 @@ class名を継承しないパターン（例：.block__element .element）も可
 
 # CSS設計
 [FLOCSS](https://github.com/hiloki/flocss)をベースとするが、  
-Component→Module  
-Project→Component  
-とし、それぞれプレフィックスを「.m-」「.c-」とする。  
-
-そしてPageレイヤーを追加し、こちらのプレフィックスを「.p-」とする（基本的にbodyに付与する想定）。  
+新たにPageレイヤーを追加し、こちらのプレフィックスを「.pg-」とする（基本的にbodyに付与する想定）。  
 Pageレイヤーの使いどころ・利点は、ページ固有のパーツをコンポーネント化せずに作れること。  
 これによって、コンポーネントが必要以上に増えることを避け、classの命名やその管理の負荷を軽減する狙いがある。  
 テンプレートレベルの共通パーツをこのレイヤーで定義することもできる（例は後述）が、  
@@ -39,12 +35,12 @@ Pageレイヤーの使いどころ・利点は、ページ固有のパーツを�
 
 例）  
 NEWS一覧とNEWS詳細で使うパーツがある場合に、共通のPageレイヤーclassを  
-.p-news  
+.pg-news  
 として  
-.p-news .sidebar  
+.pg-news .sidebar  
 のようなパーツを定義し、一覧・詳細をそれぞれ  
-.p-news.p-newsList  
-.p-news.p-newsDetail  
+.pg-news.pg-newsList  
+.pg-news.pg-newsDetail  
 のようなマルチclassにして利用するなど。  
 （この例でコンポーネント化する場合、.c-newsSidebarとなる）  
 
