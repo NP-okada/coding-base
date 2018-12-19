@@ -7,6 +7,8 @@ const autoprefixer = require('gulp-autoprefixer');
 const cached = require('gulp-cached');
 const concat = require('gulp-concat');
 const data = require('gulp-data');
+const filter = require('gulp-filter');
+const newer = require('gulp-newer');
 const notify = require('gulp-notify');
 const plumber = require('gulp-plumber');
 const progeny = require('gulp-progeny');
@@ -49,7 +51,7 @@ const src = {
 	js_entry: 'src/assets/js/entry.js',
 	js_import: 'src/assets/js/import/*.js',
 	js_vendor: 'src/assets/js/vendor/*.js',
-	images: 'src/**/images/**',
+	images: ['src/**/*images/**/*.*'],
 	copy: [
 		'src/common/js/jquery-2.2.4.min.js',
 	],
@@ -57,7 +59,7 @@ const src = {
 const dist = {
 	css: 'dist/assets/css',
 	js: 'dist/assets/js',
-	images: 'dist/**/images/**',
+	images: ['dist/**/*images/**/*.*'],
 };
 const errorHandlerFunc = notify.onError({
 	message: 'Error: <%= error.message %>',
@@ -78,11 +80,12 @@ gulp.task('serve', () => {
 	gulp.watch(src.scss, ['sass']);
 	gulp.watch([src.js_entry, src.js_import], ['js:bundle']);
 	gulp.watch(src.js_vendor, ['js:vendor']);
-	gulp.watch(src.images + '/*.{png,jpg}', ['image:copy']);
+	gulp.watch(src.images, ['image:copy']);
 	gulp.watch(src.copy, ['copy']);
 });
 
 gulp.task('pug', () => {
+	var f = filter(['**', '!**/include_pug/*']);
 	var locals = {};
 	return gulp.src(src.pug, {
 			base: 'src'
@@ -100,6 +103,7 @@ gulp.task('pug', () => {
 			locals: locals,
 			pretty: true
 		}))
+		.pipe(f)
 		.pipe(gulp.dest('dist'))
 		.pipe(browserSync.stream());
 });
@@ -149,6 +153,7 @@ gulp.task('image:copy', () => {
 	return gulp.src(src.images, {
 			base: 'src'
 		})
+		.pipe(newer('dist'))
 		.pipe(gulp.dest('dist'))
 		.pipe(browserSync.stream());
 });
@@ -160,6 +165,7 @@ gulp.task('copy', () => {
 	return gulp.src(src.copy, {
 			base: 'src'
 		})
+		.pipe(newer('dist'))
 		.pipe(gulp.dest('dist'))
 		.pipe(browserSync.stream());
 });
