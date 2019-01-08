@@ -3,7 +3,7 @@ block vars
 include _mixin
 doctype html
 html(lang="ja", itemtype="http://schema.org/WebPage", itemscope)
-	head(prefix='og: http://ogp.me/ns# ' + ogType + ': http://ogp.me/ns/' + ogType + '#')
+	head(prefix=`og: http://ogp.me/ns# ${ogType}: http://ogp.me/ns/${ogType}#`)
 		include _head
 	body(class=bodyClass)
 		#pageTop.l-wrapper
