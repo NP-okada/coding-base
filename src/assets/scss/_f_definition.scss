@@ -1,7 +1,8 @@
-// * Mixin & Variable * //
+// * Variable * //
 $bP-sp: 640px;
 $contW: 960px;
 
+// * Mixin * //
 @mixin cf {
 	&::after {
 		content: "";

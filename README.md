@@ -13,42 +13,42 @@ dist以下のファイルはタスク実行で生成されるので基本的に�
 ```
 .
 ├── dist
-├── index.html                   : ページ一覧
+├── index.html                    : ページ一覧
 └── src
     ├── assets
-    │   ├── images               : CSSで使用する画像を格納
+    │   ├── images                : 共通系（CSSで使用する等）の画像を格納
     │   ├── js
-    │   │   ├── entry.js
-    │   │   ├── import           : importするjsを格納
-    │   │   │   ├── common.js    : 共通系の関数を定義
-    │   │   │   ├── component.js : 「コンポーネント（.c-）」レイヤーのjsを定義
-    │   │   │   ├── global.js    : import以下のjs間で参照できる変数・関数を定義（「g」オブジェクトとして参照）
-    │   │   │   ├── other.js     : その他パーツのjsを定義
-    │   │   │   └── project.js   : 「プロジェクト（.p-）」レイヤーのjsを定義
-    │   │   └── vendor           : プラグインjsを格納
+    │   │   ├── entry.js          : 
+    │   │   ├── import            : importするjsを格納
+    │   │   │   ├── common.js     : 共通・汎用系の関数を定義
+    │   │   │   ├── component.js  : 「コンポーネント（.c-）」レイヤーのjsを定義
+    │   │   │   ├── global.js     : グローバル的変数・関数を定義（「g」オブジェクトとして参照）
+    │   │   │   ├── other.js      : その他パーツのjsを定義
+    │   │   │   └── project.js    : 「プロジェクト（.p-）」レイヤーのjsを定義
+    │   │   └── vendor            : プラグインjsを格納
     │   └── scss
-    │       ├── _f_base.scss     : ベースCSS
-    │       ├── _f_mv.scss       : mixinおよび変数を定義
-    │       ├── _f_reset.scss    : リセットCSS
-    │       ├── _keyframes.scss  : keyframesを定義
-    │       ├── _l_footer.scss   : フッターのスタイルを定義
-    │       ├── _l_header.scss   : ヘッダーのスタイルを定義
-    │       ├── _l_other.scss    : その他「レイアウト（.l-）」レイヤーのスタイルを定義
-    │       ├── _o_component.scss: 「コンポーネント（.c-）」レイヤーのスタイルを定義
-    │       ├── _o_other.scss    : その他パーツのスタイルを定義
-    │       ├── _o_project.scss  : 「プロジェクト（.p-）」レイヤーのスタイルを定義
-    │       ├── _o_utility.scss  : 「ユーティリティ（.u-）」レイヤーのスタイルを定義
-    │       ├── _pg.scss         : 「ページ（.pg-）」レイヤーのスタイルを定義
-    │       ├── style.scss       : 各scssをimport
-    │       └── vendor           : プラグインCSSを格納
-    ├── images                   : ページ（コンテンツ）の画像を格納
-    └── inc
-        ├── _footer.pug          : フッター
-        ├── _head.pug            : head内要素
-        ├── _header.pug          : ヘッダー
-        ├── _layout.pug          : ページの雛形
-        ├── _mixin.pug           : mixinを定義
-        └── _vars.pug            : 共通変数を定義
+    │       ├── _f_base.scss      : ベースCSS
+    │       ├── _f_definition.scss: 変数やmixin等を定義
+    │       ├── _f_reset.scss     : リセットCSS
+    │       ├── _keyframes.scss   : keyframesを記述
+    │       ├── _l_footer.scss    : フッターのスタイルを記述
+    │       ├── _l_header.scss    : ヘッダーのスタイルを記述
+    │       ├── _l_other.scss     : その他「レイアウト（.l-）」レイヤーのスタイルを記述
+    │       ├── _o_component.scss : 「コンポーネント（.c-）」レイヤーのスタイルを記述
+    │       ├── _o_other.scss     : その他パーツのスタイルを記述
+    │       ├── _o_project.scss   : 「プロジェクト（.p-）」レイヤーのスタイルを記述
+    │       ├── _o_utility.scss   : 「ユーティリティ（.u-）」レイヤーのスタイルを記述
+    │       ├── _pg.scss          : 「ページ（.pg-）」レイヤーのスタイルを記述
+    │       ├── style.scss        : 各scssをimport
+    │       └── vendor            : プラグインCSSを格納
+    ├── images                    : ページ（コンテンツ）の画像を格納
+    └── include_pug               : includeするpugを格納
+        ├── _footer.pug           : フッター
+        ├── _head.pug             : head内要素
+        ├── _header.pug           : ヘッダー
+        ├── _layout.pug           : ページの雛形
+        ├── _mixin.pug            : mixinを定義
+        └── _vars.pug             : 共通変数を定義
 ```
 
 ## コマンド
