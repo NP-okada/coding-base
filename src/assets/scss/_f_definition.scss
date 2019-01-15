@@ -1,12 +1,19 @@
-// * Variable * //
+// Variable
 $bP-sp: 640px;
 $contW: 960px;
 
-// * Mixin * //
+
+// Mixin
 @mixin cf {
 	&::after {
 		content: "";
 		display: block;
 		clear: both;
+	}
+}
+
+@mixin mqSp {
+	@media screen and (max-width: $bP-sp) {
+		@content;
 	}
 }

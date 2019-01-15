@@ -67,11 +67,11 @@ body {
 	-moz-osx-font-smoothing: unset;
 	-webkit-font-smoothing: subpixel-antialiased;
 	-webkit-text-size-adjust: 100%;
-	@media only screen and (-webkit-min-device-pixel-ratio: 2), (min-resolution: 2dppx) {
-		-moz-osx-font-smoothing: grayscale;
-		-webkit-font-smoothing: antialiased;
-	}
-@media screen and (max-width: $bP-sp) {
+@media only screen and (-webkit-min-device-pixel-ratio: 2), (min-resolution: 2dppx) {
+	-moz-osx-font-smoothing: grayscale;
+	-webkit-font-smoothing: antialiased;
+}
+@include mqSp {
 	min-width: 0;
 }
 }

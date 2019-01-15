@@ -44,7 +44,6 @@ const arg = (argList => {
 
 
 // 定数・変数定義
-var mode = 'development'; // production or development
 const src = {
 	pug: ['src/**/*.pug'],
 	scss: 'src/assets/scss/**/*.scss',
@@ -65,6 +64,7 @@ const errorHandlerFunc = notify.onError({
 	message: 'Error: <%= error.message %>',
 	icon: path.join(__dirname, 'error.png')
 });
+var mode = 'development'; // production or development
 
 
 // refer command line arguments

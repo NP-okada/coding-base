@@ -5,7 +5,7 @@
 .c-container {
 	margin: auto;
 	width: $contW;
-@media screen and (max-width: $bP-sp) {
+@include mqSp {
 	width: auto;
 }
 }
