@@ -2,14 +2,14 @@ import * as g from './import/global.js';
 import {common} from './import/common.js';
 import {component} from './import/component.js';
 import {project} from './import/project.js';
-import {other} from './import/other.js';
+import {page} from './import/page.js';
 
 (($) => {
 	var init = () => {
 		common();
 		component();
 		project();
-		other();
+		page();
 		console.log('initialized');
 	};
 
