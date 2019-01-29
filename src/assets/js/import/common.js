@@ -9,10 +9,10 @@ export function common() {
 			g.$w.on('load', function() {
 				$target.each(function() {
 					var $this = $(this);
-					var mhTargetArray = $this.data('mhTarget').split(' ');
+					var mhTargetArray = $this.data('mhTarget').split(',');
 
 					for (var i = 0; i < mhTargetArray.length; i++) {
-						$this.find(mhTargetArray[i]).matchHeight();
+						$this.find(mhTargetArray[i].trim()).matchHeight();
 					}
 				});
 			});
