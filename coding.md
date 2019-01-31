@@ -23,7 +23,7 @@ class名を継承しないパターン（例：.block__element .element）も可
 .block__element__inner__...  
 として継承する必要はない（通常innerとの関係性は持たないはずなので）。  
 
-また、jsによって状態を変化させる場合は、状態を示す「.is-」プレフィックスのclass名の使用を推奨する（例：.block__element.is-active など）。  
+また、jsによるclass制御で状態を変化させる場合は、ハイフン始まりのclass名の使用を推奨する（例：.block__element.-active など）。  
 
 # CSS設計
 [FLOCSS](https://github.com/hiloki/flocss)をベースとするが、  
