@@ -85,7 +85,7 @@ gulp.task('serve', () => {
 });
 
 gulp.task('pug', () => {
-	var f = filter(['**', '!**/include_pug/*']);
+	var f = filter(['**', '!**/include_pug/**/*']);
 	var locals = {};
 	return gulp.src(src.pug, {
 			base: 'src'
