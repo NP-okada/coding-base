@@ -15,7 +15,6 @@ const progeny = require('gulp-progeny');
 const pug = require('gulp-pug');
 const sass = require('gulp-sass');
 const sassGlob = require('gulp-sass-glob');
-const runSequence = require('run-sequence');
 const webpack = require('webpack');
 const webpackStream = require('webpack-stream');
 const webpackConfig = require('./webpack.config.js');
@@ -52,7 +51,7 @@ const src = {
 	js_vendor: 'src/assets/js/vendor/*.js',
 	images: ['src/**/*images/**/*.*'],
 	copy: [
-		'src/common/js/jquery-2.2.4.min.js',
+		'src/assets/js/jquery-2.2.4.min.js',
 	],
 };
 const dist = {
@@ -76,15 +75,15 @@ gulp.task('serve', () => {
 	browserSync.init({
 		server: './'
 	});
-	gulp.watch(src.pug, ['pug']);
-	gulp.watch(src.scss, ['sass']);
-	gulp.watch([src.js_entry, src.js_import], ['js:bundle']);
-	gulp.watch(src.js_vendor, ['js:vendor']);
-	gulp.watch(src.images, ['image:copy']);
-	gulp.watch(src.copy, ['copy']);
+	gulp.watch(src.pug, gulp.task('pug'));
+	gulp.watch(src.scss, gulp.task('sass'));
+	gulp.watch([src.js_entry, src.js_import], gulp.task('js:bundle'));
+	gulp.watch(src.js_vendor, gulp.task('js:vendor'));
+	gulp.watch(src.images, gulp.task('image:copy'));
+	gulp.watch(src.copy, gulp.task('copy'));
 });
 
-gulp.task('pug', () => {
+gulp.task('pug', (cb) => {
 	var f = filter(['**', '!**/include_pug/**/*']);
 	var locals = {};
 	return gulp.src(src.pug, {
@@ -106,9 +105,10 @@ gulp.task('pug', () => {
 		.pipe(f)
 		.pipe(gulp.dest('dist'))
 		.pipe(browserSync.stream());
+	cb();
 });
 
-gulp.task('sass', () => {
+gulp.task('sass', (cb) => {
 	return gulp.src(src.scss)
 		.pipe(plumber({
 			errorHandler: errorHandlerFunc
@@ -125,53 +125,56 @@ gulp.task('sass', () => {
 		}))
 		.pipe(gulp.dest(dist.css))
 		.pipe(browserSync.stream());
+	cb();
 });
 
-gulp.task('js', () => {
-	return runSequence('js:bundle', 'js:vendor');
-});
-gulp.task('js:bundle', () => {
-	webpackConfig.mode = mode;
-	webpackConfig.entry = './' + src.js_entry;
-	webpackConfig.output = {
-		filename: 'bundle.js'
-	};
+webpackConfig.mode = mode;
+webpackConfig.entry = './' + src.js_entry;
+webpackConfig.output = {
+	filename: 'bundle.js'
+};
+gulp.task('js:bundle', (cb) => {
 	return webpackStream(webpackConfig, webpack)
+		.on('error', () => {
+			this.emit('end');
+		})
 		.pipe(gulp.dest(dist.js))
 		.pipe(browserSync.stream());
+	cb();
 });
-gulp.task('js:vendor', () => {
+gulp.task('js:vendor', (cb) => {
 	return gulp.src(src.js_vendor)
 		.pipe(concat('vendor.js'))
 		.pipe(gulp.dest(dist.js));
+	cb();
 });
+gulp.task('js', gulp.parallel('js:bundle', 'js:vendor'));
 
-gulp.task('image', () => {
-	return runSequence('image:del', 'image:copy');
-});
-gulp.task('image:copy', () => {
+gulp.task('image:copy', (cb) => {
 	return gulp.src(src.images, {
 			base: 'src'
 		})
 		.pipe(newer('dist'))
 		.pipe(gulp.dest('dist'))
 		.pipe(browserSync.stream());
+	cb();
 });
-gulp.task('image:del', () => {
+gulp.task('image:del', (cb) => {
 	return del(dist.images);
+	cb();
 });
+gulp.task('image', gulp.series('image:del', 'image:copy'));
 
-gulp.task('copy', () => {
+gulp.task('copy', (cb) => {
 	return gulp.src(src.copy, {
 			base: 'src'
 		})
 		.pipe(newer('dist'))
 		.pipe(gulp.dest('dist'))
 		.pipe(browserSync.stream());
+	cb();
 });
 
-gulp.task('build', () => {
-	return runSequence('pug', 'sass', 'js', 'image', 'copy');
-});
+gulp.task('build', gulp.parallel('pug', 'sass', 'js', 'image', 'copy'));
 
-gulp.task('default', ['serve']);
+gulp.task('default', gulp.task('serve'));
