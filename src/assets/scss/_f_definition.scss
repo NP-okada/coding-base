@@ -17,3 +17,8 @@ $contW: 960px;
 		@content;
 	}
 }
+@mixin mqPc {
+	@media screen and (min-width: ($bP-sp + 1)) {
+		@content;
+	}
+}
