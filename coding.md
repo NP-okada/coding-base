@@ -1,5 +1,5 @@
 # class命名規則
-MindBEMding（参考：<http://blog.ruedap.com/2013/10/29/block-element-modifier>）を採用し、
+MindBEMding（参考：<http://blog.ruedap.com/2013/10/29/block-element-modifier>）を採用し、  
 ローワーキャメルケース（lowerCamelCase）を推奨。  
 
 ただし、blockにmodifierが付く場合、  
@@ -8,22 +8,11 @@ MindBEMding（参考：<http://blog.ruedap.com/2013/10/29/block-element-modifier
 .block--modifier .block__element  
 のように、1つのmodifierでコントロールすることを基本とする（class名が煩雑になるのを避けるため）。  
 
-elementが入れ子になり、  
-.block__element__element...  
-のようになっていく場合、  
-.block__elementElement...  
-としてelementを一塊にするパターンや、親のelement以下でclass名が被らないと判断できる場合には、  
-class名を継承しないパターン（例：.block__element .element）も可とする。  
-入れ子が深くなる場合、moduleあるいはcomponentとして切り出せる可能性もあるので、適宜判断すること。  
+class上でelementを続けること（例：.block__element__element...）は極力避ける。  
+スコープさえ切れていれば、内部のclassは汎用的・シンプルなもの（例：.block__element .text等）で問題ないはず。  
+同スコープ内で重複するclassが存在する／しうる場合、classやセレクタを工夫するか、あるいはcomponentとして切り出したほうがよい可能性もあるので、適宜判断すること。  
 
-ちなみに、classはあくまでblockやelementに対する関係性を示すものとして扱う。  
-例えばレイアウトの都合でinner的なdivが必要になった場合も、親が  
-.block__element__inner  
-だからといって、子要素のclassを  
-.block__element__inner__...  
-として継承する必要はない（通常innerとの関係性は持たないはずなので）。  
-
-また、jsによるclass制御で状態を変化させる場合は、ハイフン始まりのclass名の使用を推奨する（例：.block__element.-active など）。  
+また、jsで制御する状態変化のclassは、ハイフン始まりのclass名の使用を推奨する（例：.block__element.-active など）。  
 
 # CSS設計
 [FLOCSS](https://github.com/hiloki/flocss)をベースとするが、  

@@ -16,14 +16,14 @@ dist以下のファイルはタスク実行で生成されるので基本的に�
 ├── index.html                    : ページ一覧
 └── src
     ├── assets
-    │   ├── images                : 共通系（CSSで使用する等）の画像を格納
+    │   ├── images                : サイト共通の画像（CSSで使用する等）を格納
     │   ├── js
-    │   │   ├── entry.js          : 
+    │   │   ├── entry.js          : webpackのエントリーポイント
     │   │   ├── import            : importするjsを格納
     │   │   │   ├── common.js     : 共通・汎用系の関数を定義
     │   │   │   ├── component.js  : 「コンポーネント（.c-）」レイヤーのjsを定義
     │   │   │   ├── global.js     : グローバル的変数・関数を定義（「g」オブジェクトとして参照）
-    │   │   │   ├── other.js      : その他パーツのjsを定義
+    │   │   │   ├── page.js       : 「ページ（.pg-）」レイヤーのjsを定義
     │   │   │   └── project.js    : 「プロジェクト（.p-）」レイヤーのjsを定義
     │   │   └── vendor            : プラグインjsを格納
     │   └── scss
@@ -63,4 +63,4 @@ gulpの監視対象ファイルはgulpタスク起動時点で存在している
 ファイルの追加・更新が反映されない場合、Ctrl+Cでタスクを停止し、再度タスクを起動してください。
 
 ## コーディングに関して
-coding.mdを参照ください。
+[coding.md](https://github.com/NP-okada/coding-base/blob/master/coding.md)を参照ください。
