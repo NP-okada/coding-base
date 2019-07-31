@@ -9,7 +9,7 @@ MindBEMding（参考：<http://blog.ruedap.com/2013/10/29/block-element-modifier
 のように、1つのmodifierでコントロールすることを基本とする（class名が煩雑になるのを避けるため）。  
 
 class上でelementを続けること（例：.block__element__element...）は極力避ける。  
-スコープさえ切れていれば、内部のclassは汎用的・シンプルなもの（例：.block__element .text等）で問題ないはず。  
+スコープさえ切れていれば、内部のclassは汎用的・シンプルなもの（例：.block__element .element）で問題ないはず。  
 スコープ内で重複するclassが存在する／しうる場合、classやセレクタを工夫するか、あるいはcomponentとして切り出したほうがよい可能性もあるので、適宜判断すること。  
 
 また、jsで制御する状態変化のclassは、ハイフン始まりのclass名の使用を推奨する（例：.block__element.-active など）。  
