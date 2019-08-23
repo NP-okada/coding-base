@@ -34,6 +34,9 @@ textarea {
 	appearance: none;
 }
 button {
+	margin: 0;
+	border: none;
+	padding: 0;
 	background-color: transparent;
 	overflow: visible;
 	outline: none;
@@ -63,6 +66,8 @@ body {
 	color: #333;
 	font-family: "メイリオ", Meiryo, "ヒラギノ角ゴシック Pro", "Hiragino Kaku Gothic Pro", Verdana, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
 	line-height: 1.6;
+	word-wrap: break-word;
+	overflow-wrap: break-word;
 	-moz-osx-font-smoothing: unset;
 	-webkit-font-smoothing: subpixel-antialiased;
 	-webkit-text-size-adjust: 100%;
