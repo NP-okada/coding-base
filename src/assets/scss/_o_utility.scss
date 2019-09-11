@@ -2,4 +2,13 @@
  * Utility
  */
 
-
+.u-pcOnly {
+@include mqSp {
+	display: none !important;
+}
+}
+.u-spOnly {
+@include mqPc {
+	display: none !important;
+}
+}

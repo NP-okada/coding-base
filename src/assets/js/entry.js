@@ -17,27 +17,19 @@ import {page} from './import/page.js';
 
 	// レスポンシブ対応用イベントトリガー
 	(() => {
-		var baseSize;
+		var size;
 
 		$(() => {
-			baseSize = (window.innerWidth <= g.breakPoint) ? 'sp' : 'notSp';
+			size = (window.innerWidth <= g.breakPoint) ? 'sp' : 'notSp';
 
-			if (baseSize === 'sp') {
-				g.$w.trigger('_size.sp');
-			} else {
-				g.$w.trigger('_size.notSp');
-			}
+			g.$w.trigger(`_size.${size}`);
 		});
 		g.$w.on('resize', () => {
-			var size = (window.innerWidth <= g.breakPoint) ? 'sp' : 'notSp';
+			var curSize = (window.innerWidth <= g.breakPoint) ? 'sp' : 'notSp';
 
-			if (size !== baseSize) {
-				if (size === 'sp') {
-					g.$w.trigger('_size.sp');
-				} else {
-					g.$w.trigger('_size.notSp');
-				}
-				baseSize = size;
+			if (curSize !== size) {
+				g.$w.trigger(`_size.${curSize}`);
+				size = curSize;
 			}
 		});
 	})();
