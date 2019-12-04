@@ -28,6 +28,7 @@ button,
 input[type="text"],
 textarea {
 	border-radius: 0;
+	box-sizing: border-box;
 	color: inherit;
 	font-family: inherit;
 	line-height: inherit;
@@ -40,6 +41,11 @@ button {
 	background-color: transparent;
 	overflow: visible;
 	outline: none;
+}
+input[type="text"] {
+	&::placeholder {
+		opacity: 1;
+	}
 }
 img {
 	vertical-align: top;

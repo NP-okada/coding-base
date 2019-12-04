@@ -73,7 +73,8 @@ if (arg.mode === 'prod') mode = 'production';
 // タスク定義
 gulp.task('serve', () => {
 	browserSync.init({
-		server: './'
+		server: './',
+		ghostMode: false,
 	});
 	gulp.watch(src.pug, gulp.task('pug'));
 	gulp.watch(src.scss, gulp.task('sass'));

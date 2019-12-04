@@ -2,10 +2,5 @@
  * Component
  */
 
-.c-container {
-	margin: auto;
-	width: $contW;
-@include mqSp {
-	width: auto;
-}
-}
+@import "o_component_parts";
+@import "o_component_block";
