@@ -6,15 +6,13 @@ export function common() {
 		var $target = $('.js-mh');
 
 		if ($target.length) {
-			g.$w.on('load', function() {
-				$target.each(function() {
-					var $this = $(this);
-					var mhTargetArray = $this.data('mhTarget').split(',');
+			$target.each(function() {
+				var $this = $(this);
+				var mhTargetArr = $this.data('mhTarget').split(',');
 
-					for (var i = 0; i < mhTargetArray.length; i++) {
-						$this.find(mhTargetArray[i].trim()).matchHeight();
-					}
-				});
+				for (var i = 0; i < mhTargetArr.length; i++) {
+					$this.find(mhTargetArr[i].trim()).matchHeight();
+				}
 			});
 		}
 	})();

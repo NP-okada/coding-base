@@ -4,7 +4,7 @@ import {component} from './import/component.js';
 import {project} from './import/project.js';
 import {page} from './import/page.js';
 
-(($) => {
+(() => {
 	var init = () => {
 		common();
 		component();
@@ -33,4 +33,4 @@ import {page} from './import/page.js';
 			}
 		});
 	})();
-})(jQuery);
+})();
