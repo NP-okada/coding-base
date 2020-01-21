@@ -1,7 +1,7 @@
 head(prefix=`og: http://ogp.me/ns# ${ogType}: http://ogp.me/ns/${ogType}#`)
 	meta(charset="UTF-8")
 	meta(http-equiv="X-UA-Compatible", content="IE=edge")
-	meta(name="viewport", content="width=device-width,initial-scale=1.0")
+	meta(name="viewport", content="width=device-width,initial-scale=1.0", id="vp")
 	meta(name="format-detection", content="telephone=no")
 	meta(name="keywords", content=keywords)
 	meta(name="description", content=description)
@@ -13,3 +13,25 @@ head(prefix=`og: http://ogp.me/ns# ${ogType}: http://ogp.me/ns/${ogType}#`)
 	meta(property="og:title", content=title)
 	title= title
 	link(rel="stylesheet", href="assets/css/style.css")
+	//- script.
+		var _ua = (function(ua) {
+			return {
+				tablet: (ua.indexOf("windows") != -1 && ua.indexOf("touch") != -1 && ua.indexOf("tablet pc") == -1) ||
+					ua.indexOf("ipad") != -1 ||
+					(ua.indexOf("android") != -1 && ua.indexOf("mobile") == -1) ||
+					(ua.indexOf("firefox") != -1 && ua.indexOf("tablet") != -1) ||
+					ua.indexOf("kindle") != -1 ||
+					ua.indexOf("silk") != -1 ||
+					ua.indexOf("playbook") != -1,
+				mobile: (ua.indexOf("windows") != -1 && ua.indexOf("phone") != -1) ||
+					ua.indexOf("iphone") != -1 ||
+					ua.indexOf("ipod") != -1 ||
+					(ua.indexOf("android") != -1 && ua.indexOf("mobile") != -1) ||
+					(ua.indexOf("firefox") != -1 && ua.indexOf("mobile") != -1) ||
+					ua.indexOf("blackberry") != -1
+			};
+		})(navigator.userAgent.toLowerCase());
+
+		if (_ua.tablet) {
+			document.getElementById('vp').setAttribute('content', 'width=1300');
+		}
